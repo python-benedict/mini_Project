@@ -3,6 +3,8 @@
 from pathlib import Path
 
 import os
+import django_heroku
+import django
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -69,10 +71,22 @@ WSGI_APPLICATION = 'jewelryshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd5v0ip03v4j1it',
+        'USER': 'zkuaixjveaobjd',
+        'PASSWORD':'bc02038a9a1873b392609ec6f4476c8a8f8866490e3263875cc485905a6d42fb',
+        'HOST':'ec2-34-231-177-125.compute-1.amazonaws.com',
+        'PORT':'5432',
     }
 }
 
@@ -116,6 +130,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'jewelryshop/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Automatically Created on Production
+django_heroku.settings(locals())
+
 
 # Settings for Media
 MEDIA_URL = '/media/'
